@@ -1,0 +1,1394 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+<div class="background">
+
+    <div class="lives">
+      <img id="life5" src="/static/images/lifepink.png">
+      <img id="life4" src="/static/images/lifepink.png">
+      <img id="life3" src="/static/images/lifepink.png">
+      <img id="life2" src="/static/images/lifepink.png">
+      <img id="life1" src="/static/images/lifepink.png">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <img id="hintimage" src="/static/images/hint1.png">
+    </div>
+    <div class="numhint">
+      <b id="hintsi">3</b>
+    </div>
+    <span class="navbar2">
+        <a href="/">
+          <button type="button" id="1" class="glow-on-hover">BACK</button>
+        </a>
+    </span>
+    <div class="container">
+      <div id="time">
+        <span class="txt">Hr</span>
+        <span class="digit" id="hr">
+          00</span>
+          <span class="txt">Min</span>
+          <span class="digit" id="min">
+            00</span>
+            <span class="txt">Sec</span>
+            <span class="digit" id="sec">
+              00</span>
+          <span class="digit" id="count" hidden>
+            </span>
+          </div>
+
+        </div>
+  <table id="grid" disabled>
+      <div class="line1"></div>
+      <div class="line2"></div>
+      <div class="line3"></div>
+      <div class="line4"></div>
+        <tr>
+                <td><input id="cell-0"  type="text" readonly value="{{board[0][0]}}"></td>
+                <td><input id="cell-1"  type="text" readonly value="{{board[0][1]}}"></td>
+                <td><input id="cell-2"  type="text" readonly value="{{board[0][2]}}"></td>
+
+                <td><input id="cell-3"  type="text" readonly value="{{board[0][3]}}"></td>
+                <td><input id="cell-4"  type="text" readonly value="{{board[0][4]}}"></td>
+                <td><input id="cell-5"  type="text" readonly value="{{board[0][5]}}"></td>
+
+                <td><input id="cell-6"  type="text" readonly value="{{board[0][6]}}"></td>
+                <td><input id="cell-7"  type="text" readonly value="{{board[0][7]}}"></td>
+                <td><input id="cell-8"  type="text" readonly value="{{board[0][8]}}"></td>
+        </tr>
+
+        <tr>
+          <td><input id="cell-9"  type="text" readonly value="{{board[1][0]}}"></td>
+          <td><input id="cell-10" type="text" readonly value="{{board[1][1]}}"></td>
+          <td><input id="cell-11" type="text" readonly value="{{board[1][2]}}"></td>
+
+          <td><input id="cell-12" type="text" readonly value="{{board[1][3]}}"></td>
+          <td><input id="cell-13" type="text" readonly value="{{board[1][4]}}"></td>
+          <td><input id="cell-14" type="text" readonly value="{{board[1][5]}}"></td>
+
+          <td><input id="cell-15" type="text" readonly value="{{board[1][6]}}"></td>
+          <td><input id="cell-16" type="text" readonly value="{{board[1][7]}}"></td>
+          <td><input id="cell-17" type="text" readonly value="{{board[1][8]}}"></td>
+        </tr>
+
+        <tr class="row3">
+            <td><input id="cell-18" type="text" readonly value="{{board[2][0]}}"></td>
+            <td><input id="cell-19" type="text" readonly value="{{board[2][1]}}"></td>
+            <td><input id="cell-20" type="text" readonly value="{{board[2][2]}}"></td>
+
+            <td><input id="cell-21" type="text" readonly value="{{board[2][3]}}"></td>
+            <td><input id="cell-22" type="text" readonly value="{{board[2][4]}}"></td>
+            <td><input id="cell-23" type="text" readonly value="{{board[2][5]}}"></td>
+
+            <td><input id="cell-24" type="text" readonly value="{{board[2][6]}}"></td>
+            <td><input id="cell-25" type="text" readonly value="{{board[2][7]}}"></td>
+            <td><input id="cell-26" type="text" readonly value="{{board[2][8]}}"> </td>
+        </tr>
+
+        <tr>
+            <td><input id="cell-27" type="text" readonly value="{{board[3][0]}}"></td>
+            <td><input id="cell-28" type="text" readonly value="{{board[3][1]}}"></td>
+            <td><input id="cell-29" type="text" readonly value="{{board[3][2]}}"></td>
+
+            <td><input id="cell-30" type="text" readonly value="{{board[3][3]}}"></td>
+            <td><input id="cell-31" type="text" readonly value="{{board[3][4]}}"></td>
+          <td><input id="cell-32" type="text" readonly value="{{board[3][5]}}"></td>
+
+          <td><input id="cell-33" type="text" readonly value="{{board[3][6]}}"></td>
+          <td><input id="cell-34" type="text" readonly value="{{board[3][7]}}"></td>
+          <td><input id="cell-35" type="text" readonly value="{{board[3][8]}}"></td>
+        </tr>
+
+        <tr>
+            <td><input id="cell-36" type="text" readonly value="{{board[4][0]}}"></td>
+            <td><input id="cell-37" type="text" readonly value="{{board[4][1]}}"></td>
+            <td><input id="cell-38" type="text" readonly value="{{board[4][2]}}"></td>
+
+            <td><input id="cell-39" type="text" readonly value="{{board[4][3]}}"></td>
+            <td><input id="cell-40" type="text" readonly value="{{board[4][4]}}"></td>
+            <td><input id="cell-41" type="text" readonly value="{{board[4][5]}}"></td>
+
+            <td><input id="cell-42" type="text" readonly value="{{board[4][6]}}"></td>
+            <td><input id="cell-43" type="text" readonly value="{{board[4][7]}}"></td>
+            <td><input id="cell-44" type="text" readonly value="{{board[4][8]}}"></td>
+        </tr>
+
+        <tr>
+            <td><input id="cell-45" type="text" readonly value="{{board[5][0]}}"></td>
+            <td><input id="cell-46" type="text" readonly value="{{board[5][1]}}"></td>
+            <td><input id="cell-47" type="text" readonly value="{{board[5][2]}}"></td>
+
+            <td><input id="cell-48" type="text" readonly value="{{board[5][3]}}"></td>
+            <td><input id="cell-49" type="text" readonly value="{{board[5][4]}}"></td>
+            <td><input id="cell-50" type="text" readonly value="{{board[5][5]}}"></td>
+
+            <td><input id="cell-51" type="text" readonly value="{{board[5][6]}}"></td>
+            <td><input id="cell-52" type="text" readonly value="{{board[5][7]}}"></td>
+            <td><input id="cell-53" type="text" readonly value="{{board[5][8]}}"></td>
+        </tr>
+
+        <tr>
+            <td><input id="cell-54" type="text" readonly value="{{board[6][0]}}"></td>
+            <td><input id="cell-55" type="text" readonly value="{{board[6][1]}}"></td>
+            <td><input id="cell-56" type="text" readonly value="{{board[6][2]}}"></td>
+
+            <td><input id="cell-57" type="text" readonly value="{{board[6][3]}}"></td>
+            <td><input id="cell-58" type="text" readonly value="{{board[6][4]}}"></td>
+            <td><input id="cell-59" type="text" readonly value="{{board[6][5]}}"></td>
+
+            <td><input id="cell-60" type="text" readonly value="{{board[6][6]}}"></td>
+            <td><input id="cell-61" type="text" readonly value="{{board[6][7]}}"></td>
+            <td><input id="cell-62" type="text" readonly value="{{board[6][8]}}"></td>
+        </tr>
+
+        <tr>
+            <td><input id="cell-63" type="text" readonly value="{{board[7][0]}}"></td>
+            <td><input id="cell-64" type="text" readonly value="{{board[7][1]}}"></td>
+            <td><input id="cell-65" type="text" readonly value="{{board[7][2]}}"></td>
+
+            <td><input id="cell-66" type="text" readonly value="{{board[7][3]}}"></td>
+            <td><input id="cell-67" type="text" readonly value="{{board[7][4]}}"></td>
+            <td><input id="cell-68" type="text" readonly value="{{board[7][5]}}"></td>
+
+            <td><input id="cell-69" type="text" readonly value="{{board[7][6]}}"></td>
+            <td><input id="cell-70" type="text" readonly value="{{board[7][7]}}"></td>
+            <td><input id="cell-71" type="text" readonly value="{{board[7][8]}}"></td>
+        </tr>
+
+        <tr>
+            <td><input id="cell-72" type="text" readonly value="{{board[8][0]}}"></td>
+            <td><input id="cell-73" type="text" readonly value="{{board[8][1]}}"></td>
+            <td><input id="cell-74" type="text" readonly value="{{board[8][2]}}"></td>
+
+            <td><input id="cell-75" type="text" readonly value="{{board[8][3]}}"></td>
+            <td><input id="cell-76" type="text" readonly value="{{board[8][4]}}"></td>
+            <td><input id="cell-77" type="text" readonly value="{{board[8][5]}}"></td>
+
+            <td><input id="cell-78" type="text" readonly value="{{board[8][6]}}"></td>
+            <td><input id="cell-79" type="text" readonly value="{{board[8][7]}}"></td>
+            <td><input id="cell-80" type="text" readonly value="{{board[8][8]}}"></td>
+        </tr>
+      </table>
+      <div class="numpad">
+        <button type="button" class="numpad-num1" id="numpad_num1">1</button>
+        <button type="button" class="numpad-num2" id="numpad_num2">2</button>
+        <button type="button" class="numpad-num3" id="numpad_num3">3</button>
+        <br>
+        <button type="button" class="numpad-num4" id="numpad_num4">4</button>
+        <button type="button" class="numpad-num5" id="numpad_num5">5</button>
+        <button type="button" class="numpad-num6" id="numpad_num6">6</button>
+        <br>
+        <button type="button" class="numpad-num7" id="numpad_num7">7</button>
+        <button type="button" class="numpad-num8" id="numpad_num8">8</button>
+        <button type="button" class="numpad-num9" id="numpad_num9">9</button>
+      </div>
+      <div>
+        <div class="buttoni">
+          <button id="starttime" onclick="generatesudoku()">Generate Sudoku</button>
+          <br><br><br>
+          <button id="hint">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hint&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+          <br><br><br>
+          <button id="solve">Solve Sudoku</button>
+          <br><br><br><br><br><br><br><br>
+          <button id="resetime">Validate Sudoku</button>
+        </div>
+      </div>
+</div>
+<script type="text/javascript">
+// Creating the timer
+let startBtn = document.getElementById('starttime');
+let stopBtn = document.getElementById('stop');
+let resetBtn = document.getElementById('resetime');
+let counting=0;
+let hour = 00;
+let minute = 00;
+let second = 00;
+let count = 00;
+var hints=3;
+var apas=0;
+//var contornums=0;
+startBtn.addEventListener('click', function () {
+  if (counting%2==0)
+  {
+    timer = true;
+    hour = 0;
+    minute = 0;
+    second = 0;
+    count = 0;
+    document.getElementById('hr').innerHTML = "00";
+    document.getElementById('min').innerHTML = "00";
+    document.getElementById('sec').innerHTML = "00";
+
+    document.getElementById('count').innerHTML = "00";
+  }
+  else{
+    timer = false;
+    hour = 0;
+    minute = 0;
+    second = 0;
+    count = 0;
+    document.getElementById('hr').innerHTML = "00";
+    document.getElementById('min').innerHTML = "00";
+    document.getElementById('sec').innerHTML = "00";
+    document.getElementById('count').innerHTML = "00";
+    setTimeout(function(){
+      timer=true;
+    },1);
+  }
+  stopWatch();
+  counting=counting+1;
+});
+
+
+resetBtn.addEventListener('click', function () {
+    timer = false;
+    hour = 0;
+    minute = 0;
+    second = 0;
+    count = 0;
+    document.getElementById('hr').innerHTML = "00";
+    document.getElementById('min').innerHTML = "00";
+    document.getElementById('sec').innerHTML = "00";
+    document.getElementById('count').innerHTML = "00";
+});
+
+function stopWatch() {
+    if (timer) {
+        count++;
+
+        if (count == 100) {
+            second++;
+            count = 0;
+        }
+
+        if (second == 60) {
+            minute++;
+            second = 0;
+        }
+
+        if (minute == 60) {
+            hour++;
+            minute = 0;
+            second = 0;
+        }
+
+        let hrString = hour;
+        let minString = minute;
+        let secString = second;
+        let countString = count;
+
+        if (hour < 10) {
+            hrString = "0" + hrString;
+        }
+
+        if (minute < 10) {
+            minString = "0" + minString;
+        }
+
+        if (second < 10) {
+            secString = "0" + secString;
+        }
+
+        if (count < 10) {
+            countString = "0" + countString;
+        }
+
+        document.getElementById('hr').innerHTML = hrString;
+        document.getElementById('min').innerHTML = minString;
+        document.getElementById('sec').innerHTML = secString;
+        document.getElementById('count').innerHTML = countString;
+        setTimeout(stopWatch, 10);
+    }
+}
+var was=false;
+// Generating the sudoku
+function generatesudoku() {
+    $.ajax({
+      type: 'POST',
+      url: '/generatesudoku',
+      dataType: 'json',
+      cache: false,
+      success: function(response) {
+          clear();
+          document.getElementById('numpad_num1').style.opacity="0.7";
+            document.getElementById('numpad_num2').style.opacity="0.7";
+            document.getElementById('numpad_num3').style.opacity="0.7";
+            document.getElementById('numpad_num4').style.opacity="0.7";
+            document.getElementById('numpad_num5').style.opacity="0.7";
+            document.getElementById('numpad_num6').style.opacity="0.7";
+            document.getElementById('numpad_num7').style.opacity="0.7";
+            document.getElementById('numpad_num8').style.opacity="0.7";
+            document.getElementById('numpad_num9').style.opacity="0.7";
+            document.getElementById('hintsi').innerHTML=3;
+            document.getElementById('hintsi').style.opacity="1";
+            document.getElementById("hintimage").style.opacity="1";
+            document.getElementById('hint').disabled=false;
+            document.getElementById("life1").style.opacity="1";
+            document.getElementById("life2").style.opacity="1";
+            document.getElementById("life3").style.opacity="1";
+            document.getElementById("life4").style.opacity="1";
+            document.getElementById("life5").style.opacity="1";
+            document.getElementById('hr').innerHTML = "00";
+            document.getElementById('min').innerHTML = "00";
+            document.getElementById('sec').innerHTML = "00";
+            document.getElementById('count').innerHTML = "00";
+            was=true;
+            win=false;
+            //contornums=0;
+            hints=3;
+          var c=0;
+          for (let i=0; i<=80; i++){
+            var yes=Math.floor((Math.random() * 30)+1);
+            let td="cell-"+i;
+            var td0 = document.getElementById(td);
+            td0.style.visibility = "visible";
+            td0.value=response[i];
+            td0.setAttribute("value", response[i]);
+            if(yes>14)
+            {
+              td0.style.visibility = "hidden";
+              c=c+1;
+            }
+          }
+          if(c<40){
+            while(c!=42)
+            {
+              var i=Math.floor((Math.random() * 80)+1);
+              let td="cell-"+i;
+
+              var td0 = document.getElementById(td);
+              if (td0.style.visibility== "visible")
+              {
+                td0.style.visibility = "hidden";
+                c++;
+              }
+
+            }
+          }
+          if(c>57){
+            while(c!=55)
+            {
+              var i=Math.floor((Math.random() * 80)+1);
+              let td="cell-"+i;
+
+              var td0 = document.getElementById(td);
+              if (td0.style.visibility== "hidden")
+              {
+                td0.style.visibility = "visible";
+                c--;
+              }
+
+            }
+          }
+          get_values();
+          console.log(contornums);
+        }
+      });
+    }
+    const values=[];
+    //Getting the values of the Sudoku
+    function get_values(){
+    for (let i=0; i<=80; i++)
+    {
+      var td="cell-"+i;
+      var td0 = document.getElementById(td);
+      values[i]=td0.value;
+    }
+  }
+  //Clearing the screen selections after certain actions
+  function clear(){
+    for (let i=0; i<=80; i++)
+    {
+          var td="cell-"+i;
+          var td0 = document.getElementById(td);
+          if(td0.className == 'highlight')
+          {
+            td0.className = '';
+          }
+          if(td0.className == 'highlight2')
+          {
+            td0.className = '';
+          }
+          if(td0.className == 'highlight3')
+          {
+            td0.className = '';
+          }
+        }
+      }
+      window.onload = function () {
+        generatesudoku();
+        var tds = document.getElementsByTagName("td");
+        for (var i = 0; i < tds.length; i++)
+        tds[i].onclick=highlight;
+      }
+
+      var win=false;
+          var same;
+          var af=true;
+          var ok=false;
+          var contus=0;
+          //Highlight the block,row,column of selected element and remember the selected element
+   function highlight() {
+            clear();
+            console.log(contornums);
+            const parent = this;
+            const children = Array.from(parent.children);
+            const ids = children.map(element => {
+              return element.id;
+            });
+            var str=ids[0];
+            var contornums=0;
+            same = document.getElementById(str);
+            same.className='highlight3';
+            var same_num;
+    if(same.style.visibility=="visible"){
+      same_num=same.value;
+    }
+    else{
+      same_num=-1;
+    }
+    //Highlight same values
+    if(same.style.visibility=="visible"){
+
+      for (let i=0; i<=80; i++)
+      {
+        var dt="cell-"+i;
+        var dt0= document.getElementById(dt);
+        if(dt0.value!="")
+        {
+          if(same_num==dt0.value && dt0.className!='highlight3')
+          {
+            dt0.className = 'highlight2';
+          }
+        }
+      }
+    }
+    let length=str.length;
+    if (length==6)
+    {
+      var idt=str.slice(-1);
+    }
+    else{
+      var idt = str.slice(-2);
+    }
+    var id =parseInt(idt);
+    var aux=id;
+    while(aux%9!=0)
+    {
+      aux=aux-1;
+    }
+    var aux2 =id;
+    while(aux2>9)
+    {
+      aux2=aux2-9;
+    }
+    if (aux2==9)
+    {
+      aux2=0;
+    }
+    var startrow=aux2- (aux2%3);
+    var startcol=(aux/9) - ((aux/9)%3);
+    var intblock=startcol*9+startrow;
+    //Highlight the block
+    for (let j=0; j<3; j++)
+    {
+      for (let i=intblock; i<intblock+3; i++){
+        var block="cell-"+i;
+        var bloc = document.getElementById(block);
+        if (bloc.style.visibility== "hidden")
+        {
+          bloc.style.visibility = "visible";
+          bloc.value="";
+        }
+        if(bloc.className!='highlight3'){
+          bloc.className = 'highlight';
+        }
+      }
+      intblock=intblock+9;
+    }
+    //Highlight the column
+    for (let i=aux; i<aux+9; i++)
+    {
+      let td0="cell-"+i;
+      var td = document.getElementById(td0);
+      if (td.style.visibility== "hidden")
+      {
+        td.style.visibility = "visible";
+        td.value="";
+      }
+      if(td.className!='highlight3'){
+        td.className = 'highlight';
+      }}
+      //Highlight the row
+      for (let i=aux2; i<=80; i=i+9)
+      {
+        let td0="cell-"+i;
+        var td = document.getElementById(td0);
+        if (td.style.visibility== "hidden")
+        {
+          td.style.visibility = "visible";
+          td.value="";
+        }
+        if(td.className!='highlight3'){
+          td.className = 'highlight';
+        }}
+        //Hint Button
+        var hint=document.getElementById('hint');
+        var hintsi=document.getElementById('hintsi');
+        hint.addEventListener("click",function(){
+          var id_button=same.id;
+          let lengthi=id_button.length;
+          if (lengthi==6)
+          {
+            var idno=id_button.slice(-1);
+          }
+          else{
+            var idno = id_button.slice(-2);
+          }
+          var id_but =parseInt(idno);
+          if ((same.style.visibility=="hidden" || same.value=="")){
+            console.log(hints);
+            hints=hints-1;
+            let hintext=hints.toString();
+            hintsi.innerHTML=hintext;
+            var conts=0;
+            same.value = values[id_but];
+            same.style.visibility = "visible";
+            for (let i=0; i<=80; i++)
+            {
+              var dt="cell-"+i;
+        var dt0= document.getElementById(dt);
+        if(dt0.value==values[id_but])
+        {
+            dt0.className = 'highlight2';
+        }
+        if(dt0.value==values[id_but] && dt0.style.visibility=="visible")
+          {
+            conts+=1;
+          }
+        }
+        if(conts==9)
+          {
+            var name="numpad_num"+values[id_but];
+            var numpad=document.getElementById(name);
+            numpad.style.opacity="0";
+            clear();
+          }
+          if (hints==0)
+          {
+              hintsi.style.opacity="0";
+              document.getElementById("hintimage").style.opacity="0";
+              hint.disabled=true;
+            }
+
+          }
+          var r=0;
+        for (let i=0; i<=80; i++)
+        {
+          var dt="cell-"+i;
+          var dt0= document.getElementById(dt);
+          if(dt0.style.visibility=="visible" && dt0.value!="")
+          {
+            r=r+1;
+          }
+        }
+        if(win==false)
+        {
+          if(r==81)
+          {
+            setTimeout(() => {   alert("You won the game!");}, 100);
+            win=true;
+            generatesudoku();
+          }
+        }
+        });
+        //Numpad Number 1
+        af=true;
+        var numpad1=document.getElementById('numpad_num1');
+        numpad1.addEventListener("click", function(){
+          if(af==true)
+          {
+             if(was==true)
+            {
+              contornums=0;
+              was=false;
+            }
+            var id_button=same.id;
+            let lengthi=id_button.length;
+            if (lengthi==6)
+            {
+              var idno=id_button.slice(-1);
+            }
+            else{
+              var idno = id_button.slice(-2);
+            }
+            var id_but =parseInt(idno);
+            if ((same.style.visibility=="hidden" || same.value=="")){
+              if(values[id_but]==1)
+              {
+                same.value = 1;
+                same.style.visibility = "visible";
+                var cont=0;
+                for (let i=0; i<=80; i++)
+                {
+                  var dt="cell-"+i;
+                  var dt0= document.getElementById(dt);
+                  if(dt0.value==values[id_but])
+                  {
+                    dt0.className = 'highlight2';
+                  }
+                  if(dt0.value==1 && dt0.style.visibility=="visible")
+                  {
+                    cont=cont+1;
+                  }
+                }
+                if(cont==9)
+                {
+                  numpad1.style.opacity="0";
+                  clear();
+                }
+              }
+              else{
+                contornums=contornums+1;
+                var lifetext="life"+contornums;
+                document.getElementById(lifetext).style.opacity="0";
+                console.log(contornums);
+              }
+
+              if(contornums==5)
+              {
+                setTimeout(() => {   alert("You have lost the game!");}, 100);
+                generatesudoku();
+              }
+            }
+            af=false;
+          }
+        var r=0;
+        for (let i=0; i<=80; i++)
+        {
+          var dt="cell-"+i;
+          var dt0= document.getElementById(dt);
+          if(dt0.style.visibility=="visible" && dt0.value!="")
+          {
+            r=r+1;
+          }
+        }
+        if(win==false)
+        {
+          if(r==81)
+          {
+            setTimeout(() => {   alert("You won the game!");}, 100);
+            win=true;
+            generatesudoku();
+          }
+        }
+          });
+      //Numpad Number 2
+      var numpad2=document.getElementById('numpad_num2');
+      numpad2.addEventListener("click", function(){
+        if(af==true)
+          {
+             if(was==true)
+            {
+              contornums=0;
+              was=false;
+            }
+        var id_button=same.id;
+        let lengthi=id_button.length;
+        if (lengthi==6)
+        {
+          var idno=id_button.slice(-1);
+        }
+        else{
+          var idno = id_button.slice(-2);
+        }
+        var id_but =parseInt(idno);
+        if ((same.style.visibility=="hidden" || same.value=="") ){
+          if(values[id_but]==2){
+
+            same.value = 2;
+            same.style.visibility = "visible";
+            var cont=0;
+            for (let i=0; i<=80; i++)
+            {
+              var dt="cell-"+i;
+              var dt0= document.getElementById(dt);
+              if(dt0.value==values[id_but])
+              {
+                dt0.className = 'highlight2';
+              }
+              if(dt0.value==2 && dt0.style.visibility=="visible")
+              {
+                cont=cont+1;
+              }
+            }
+            console.log(cont);
+            if(cont==9)
+            {
+              numpad2.style.opacity="0";
+              clear();
+            }
+          }
+          else{
+              contornums=contornums+1;
+              var lifetext="life"+contornums;
+              document.getElementById(lifetext).style.opacity="0";
+              console.log(contornums);
+            }
+
+             if(contornums==5)
+            {
+              setTimeout(() => {   alert("You have lost the game!");}, 100);
+              generatesudoku();
+            }
+        }
+        af=false;
+      }
+      var r=0;
+        for (let i=0; i<=80; i++)
+        {
+          var dt="cell-"+i;
+          var dt0= document.getElementById(dt);
+          if(dt0.style.visibility=="visible" && dt0.value!="")
+          {
+            r=r+1;
+          }
+        }
+        if(win==false )
+        {
+          if(r==81)
+          {
+            setTimeout(() => {   alert("You won the game!");}, 100);
+            win=true;
+            generatesudoku();
+          }
+        }
+      });
+      //Numpad Number 3
+      var numpad3=document.getElementById('numpad_num3');
+      numpad3.addEventListener("click", function(){
+        if(af==true)
+          {
+             if(was==true)
+            {
+              contornums=0;
+              was=false;
+            }
+        var id_button=same.id;
+        let lengthi=id_button.length;
+        if (lengthi==6)
+      {
+        var idno=id_button.slice(-1);
+      }
+      else{
+        var idno = id_button.slice(-2);
+      }
+      var id_but =parseInt(idno);
+        if ((same.style.visibility=="hidden" || same.value=="")){
+          if(values[id_but]==3)
+          {
+            same.value = 3;
+            same.style.visibility = "visible";
+            var cont=0;
+            for (let i=0; i<=80; i++)
+            {
+              var dt="cell-"+i;
+              var dt0= document.getElementById(dt);
+              if(dt0.value==values[id_but])
+              {
+                dt0.className = 'highlight2';
+              }
+              if(dt0.value==3 && dt0.style.visibility=="visible")
+              {
+                cont=cont+1;
+              }
+            }
+            console.log(cont);
+            if(cont==9)
+            {
+              numpad3.style.opacity="0";
+              clear();
+            }
+          }
+          else{
+              contornums=contornums+1;
+              var lifetext="life"+contornums;
+              document.getElementById(lifetext).style.opacity="0";
+              console.log(contornums);
+            }
+
+             if(contornums==5)
+            {
+              setTimeout(() => {   alert("You have lost the game!");}, 100);
+              generatesudoku();
+            }
+      }
+      af=false;
+    }
+    var r=0;
+        for (let i=0; i<=80; i++)
+        {
+          var dt="cell-"+i;
+          var dt0= document.getElementById(dt);
+          if(dt0.style.visibility=="visible" && dt0.value!="")
+          {
+            r=r+1;
+          }
+        }
+        if(win==false)
+        {
+          if(r==81)
+          {
+            setTimeout(() => {   alert("You won the game!");}, 100);
+            win=true;
+            generatesudoku();
+          }
+        }
+      });
+      //Numpad Number 4
+      var numpad4=document.getElementById('numpad_num4');
+      numpad4.addEventListener("click", function(){
+        if(af==true)
+          {
+             if(was==true)
+            {
+              contornums=0;
+              was=false;
+            }
+        var id_button=same.id;
+        let lengthi=id_button.length;
+        if (lengthi==6)
+      {
+        var idno=id_button.slice(-1);
+      }
+      else{
+        var idno = id_button.slice(-2);
+      }
+        var id_but =parseInt(idno);
+        if ((same.style.visibility=="hidden" || same.value=="")){
+          if( values[id_but]==4)
+          {
+
+            same.value = 4;
+            same.style.visibility = "visible";
+            var cont=0;
+            for (let i=0; i<=80; i++)
+            {
+              var dt="cell-"+i;
+              var dt0= document.getElementById(dt);
+              if(dt0.value==values[id_but])
+              {
+                dt0.className = 'highlight2';
+              }
+              if(dt0.value==4 && dt0.style.visibility=="visible")
+          {
+            cont=cont+1;
+          }
+        }
+        if(cont==9)
+        {
+          numpad4.style.opacity="0";
+          clear();
+        }
+      }
+          else{
+              contornums=contornums+1;
+              var lifetext="life"+contornums;
+              document.getElementById(lifetext).style.opacity="0";
+              console.log(contornums);
+            }
+
+             if(contornums==5)
+            {
+              setTimeout(() => {   alert("You have lost the game!");}, 100);
+              generatesudoku();
+            }
+      }
+      af=false;
+    }
+    var r=0;
+        for (let i=0; i<=80; i++)
+        {
+          var dt="cell-"+i;
+          var dt0= document.getElementById(dt);
+          if(dt0.style.visibility=="visible" && dt0.value!="")
+          {
+            r=r+1;
+          }
+        }
+        if(win==false)
+        {
+          if(r==81)
+          {
+            setTimeout(() => {   alert("You won the game!");}, 100);
+            win=true;
+            generatesudoku();
+          }
+        }
+      });
+      //Numpad Number 5
+      var numpad5=document.getElementById('numpad_num5');
+      numpad5.addEventListener("click", function(){
+        if(af==true)
+          {
+             if(was==true)
+            {
+              contornums=0;
+              was=false;
+            }
+        var id_button=same.id;
+        let lengthi=id_button.length;
+        if (lengthi==6)
+      {
+        var idno=id_button.slice(-1);
+      }
+      else{
+        var idno = id_button.slice(-2);
+      }
+        var id_but =parseInt(idno);
+        if ((same.style.visibility=="hidden" || same.value=="")){
+          if(values[id_but]==5)
+          {
+
+            same.value = 5;
+            same.style.visibility = "visible";
+            var cont=0;
+            for (let i=0; i<=80; i++)
+            {
+              var dt="cell-"+i;
+              var dt0= document.getElementById(dt);
+              if(dt0.value==values[id_but])
+              {
+                dt0.className = 'highlight2';
+              }
+              if(dt0.value==5 && dt0.style.visibility=="visible")
+          {
+            cont=cont+1;
+          }
+        }
+        console.log(cont);
+        if(cont==9)
+        {
+          numpad5.style.opacity="0";
+          clear();
+        }
+      }
+
+      else{
+              contornums=contornums+1;
+              var lifetext="life"+contornums;
+              document.getElementById(lifetext).style.opacity="0";
+              console.log(contornums);
+            }
+
+             if(contornums==5)
+            {
+              setTimeout(() => {   alert("You have lost the game!");}, 100);
+              generatesudoku();
+            }
+      }
+      af=false;
+      }
+      var r=0;
+        for (let i=0; i<=80; i++)
+        {
+          var dt="cell-"+i;
+          var dt0= document.getElementById(dt);
+          if(dt0.style.visibility=="visible" && dt0.value!="")
+          {
+            r=r+1;
+          }
+        }
+        if(win==false)
+        {
+          if(r==81)
+          {
+            setTimeout(() => {   alert("You won the game!");}, 100);
+            win=true;
+            generatesudoku();
+          }
+        }
+      });
+      //Numpad Number 6
+      var numpad6=document.getElementById('numpad_num6');
+      numpad6.addEventListener("click", function(){
+        if(af==true)
+          {
+             if(was==true)
+            {
+              contornums=0;
+              was=false;
+            }
+        var id_button=same.id;
+        let lengthi=id_button.length;
+        if (lengthi==6)
+      {
+        var idno=id_button.slice(-1);
+      }
+      else{
+        var idno = id_button.slice(-2);
+      }
+        var id_but =parseInt(idno);
+        if ((same.style.visibility=="hidden" || same.value=="")){
+          if(values[id_but]==6)
+          {
+
+            same.value = 6;
+            same.style.visibility = "visible";
+            var cont=0;
+            for (let i=0; i<=80; i++)
+            {
+              var dt="cell-"+i;
+              var dt0= document.getElementById(dt);
+              if(dt0.value==values[id_but])
+              {
+                dt0.className = 'highlight2';
+              }
+              if(dt0.value==6 && dt0.style.visibility=="visible")
+              {
+                cont=cont+1;
+              }
+            }
+            if(cont==9)
+            {
+              numpad6.style.opacity="0";
+              clear();
+            }
+          }
+          else{
+              contornums=contornums+1;
+              var lifetext="life"+contornums;
+              document.getElementById(lifetext).style.opacity="0";
+              console.log(contornums);
+            }
+
+             if(contornums==5)
+            {
+              setTimeout(() => {   alert("You have lost the game!");}, 100);
+              generatesudoku();
+            }
+      }
+      af=false;
+
+      }
+      var r=0;
+        for (let i=0; i<=80; i++)
+        {
+          var dt="cell-"+i;
+          var dt0= document.getElementById(dt);
+          if(dt0.style.visibility=="visible" && dt0.value!="")
+          {
+            r=r+1;
+          }
+        }
+        if(win==false)
+        {
+          if(r==81)
+          {
+            setTimeout(() => {   alert("You won the game!");}, 100);
+            win=true;
+            generatesudoku();
+          }
+        }
+      });
+      //Numpad Number 7
+      var numpad7=document.getElementById('numpad_num7');
+      numpad7.addEventListener("click", function(){
+        if(af==true)
+          {
+             if(was==true)
+            {
+              contornums=0;
+              was=false;
+            }
+        var id_button=same.id;
+        let lengthi=id_button.length;
+        if (lengthi==6)
+      {
+        var idno=id_button.slice(-1);
+      }
+      else{
+        var idno = id_button.slice(-2);
+      }
+        var id_but =parseInt(idno);
+        if ((same.style.visibility=="hidden" || same.value=="")){
+            if(values[id_but]==7){
+
+              same.value = 7;
+              same.style.visibility = "visible";
+              var cont=0;
+              for (let i=0; i<=80; i++)
+              {
+                var dt="cell-"+i;
+                var dt0= document.getElementById(dt);
+                if(dt0.value==values[id_but])
+        {
+          dt0.className = 'highlight2';
+        }
+        if(dt0.value==7 && dt0.style.visibility=="visible")
+        {
+          cont=cont+1;
+        }
+      }
+      if(cont==9)
+      {
+        numpad7.style.opacity="0";
+        clear();
+      }
+    }
+    else{
+              contornums=contornums+1;
+              var lifetext="life"+contornums;
+              document.getElementById(lifetext).style.opacity="0";
+              console.log(contornums);
+            }
+
+             if(contornums==5)
+            {
+              setTimeout(() => {   alert("You have lost the game!");}, 100);
+              generatesudoku();
+            }
+      }
+      af=false;
+
+    }
+    var r=0;
+        for (let i=0; i<=80; i++)
+        {
+          var dt="cell-"+i;
+          var dt0= document.getElementById(dt);
+          if(dt0.style.visibility=="visible" && dt0.value!="")
+          {
+            r=r+1;
+          }
+        }
+        if(win==false)
+        {
+          if(r==81)
+          {
+            setTimeout(() => {   alert("You won the game!");}, 100);
+            win=true;
+            generatesudoku();
+          }
+        }
+  });
+  //Numpad Number 8
+  var numpad8=document.getElementById('numpad_num8');
+  numpad8.addEventListener("click", function(){
+        if(af==true)
+          {
+             if(was==true)
+            {
+              contornums=0;
+              was=false;
+            }
+        var id_button=same.id;
+        let lengthi=id_button.length;
+        if (lengthi==6)
+      {
+        var idno=id_button.slice(-1);
+      }
+      else{
+        var idno = id_button.slice(-2);
+      }
+        var id_but =parseInt(idno);
+        if ((same.style.visibility=="hidden" || same.value=="")){
+            if(values[id_but]==8)
+            {
+
+              same.value = 8;
+              same.style.visibility = "visible";
+              var cont=0;
+              for (let i=0; i<=80; i++)
+              {
+                var dt="cell-"+i;
+                var dt0= document.getElementById(dt);
+                if(dt0.value==values[id_but])
+                {
+                  dt0.className = 'highlight2';
+                }
+                if(dt0.value==8 && dt0.style.visibility=="visible")
+                {
+                  cont=cont+1;
+                }
+              }
+              if(cont==9)
+              {
+                numpad8.style.opacity="0";
+                clear();
+              }
+            }
+            else{
+              contornums=contornums+1;
+              var lifetext="life"+contornums;
+              document.getElementById(lifetext).style.opacity="0";
+              console.log(contornums);
+            }
+
+             if(contornums==5)
+            {
+              setTimeout(() => {   alert("You have lost the game!");}, 100);
+              generatesudoku();
+            }
+      }
+      af=false;
+
+      }
+      var r=0;
+        for (let i=0; i<=80; i++)
+        {
+          var dt="cell-"+i;
+          var dt0= document.getElementById(dt);
+          if(dt0.style.visibility=="visible" && dt0.value!="")
+          {
+            r=r+1;
+          }
+        }
+        if(win==false)
+        {
+          if(r==81)
+          {
+            setTimeout(() => {   alert("You won the game!");}, 100);
+            win=true;
+            generatesudoku();
+          }
+        }
+      });
+      //Numpad Number 9
+      var numpad9=document.getElementById('numpad_num9');
+      numpad9.addEventListener("click", function(){
+        if(af==true)
+          {
+             if(was==true)
+            {
+              contornums=0;
+              was=false;
+            }
+        var id_button=same.id;
+        let lengthi=id_button.length;
+        if (lengthi==6)
+      {
+        var idno=id_button.slice(-1);
+      }
+      else{
+        var idno = id_button.slice(-2);
+      }
+        var id_but =parseInt(idno);
+        if ((same.style.visibility=="hidden" || same.value=="")){
+            if(values[id_but]==9)
+            {
+
+              same.value = 9;
+              same.style.visibility = "visible";
+              var cont=0;
+              for (let i=0; i<=80; i++)
+              {
+                var dt="cell-"+i;
+                var dt0= document.getElementById(dt);
+                if(dt0.value==values[id_but])
+                {
+                  dt0.className = 'highlight2';
+                }
+                if(dt0.value==9 && dt0.style.visibility=="visible")
+                {
+                  cont=cont+1;
+                }
+          }
+        if(cont==9)
+        {
+          numpad9.style.opacity="0";
+          clear();
+        }
+      }
+      else{
+              contornums=contornums+1;
+              var lifetext="life"+contornums;
+              document.getElementById(lifetext).style.opacity="0";
+              console.log(contornums);
+            }
+
+             if(contornums==5)
+            {
+              setTimeout(() => {   alert("You have lost the game!");}, 100);
+              generatesudoku();
+            }
+      }
+      af=false;
+      }
+      var r=0;
+        for (let i=0; i<=80; i++)
+        {
+          var dt="cell-"+i;
+          var dt0= document.getElementById(dt);
+          if(dt0.style.visibility=="visible" && dt0.value!="")
+          {
+            r=r+1;
+          }
+        }
+        if(win==false)
+        {
+          if(r==81)
+          {
+            setTimeout(() => {   alert("You won the game!");}, 100);
+            win=true;
+            generatesudoku();
+          }
+        }
+    });
+
+
+      }
+      //Solve Button
+      var solve=document.getElementById('solve');
+      solve.addEventListener("click",function(){
+              for (let i=0; i<=80; i++)
+            {
+              let td0="cell-"+i;
+              var td = document.getElementById(td0);
+              td.value=values[i];
+              td.style.visibility="visible";
+            }
+            clear();
+            document.getElementById('numpad_num1').style.opacity="0";
+            document.getElementById('numpad_num2').style.opacity="0";
+            document.getElementById('numpad_num3').style.opacity="0";
+            document.getElementById('numpad_num4').style.opacity="0";
+            document.getElementById('numpad_num5').style.opacity="0";
+            document.getElementById('numpad_num6').style.opacity="0";
+            document.getElementById('numpad_num7').style.opacity="0";
+            document.getElementById('numpad_num8').style.opacity="0";
+            document.getElementById('numpad_num9').style.opacity="0";
+
+        });
+
+        var validate=document.getElementById('resetime');
+        validate.addEventListener("click",function(){
+            var r=0;
+        for (let i=0; i<=80; i++)
+        {
+          var dt="cell-"+i;
+          var dt0= document.getElementById(dt);
+          if(dt0.style.visibility=="visible" && dt0.value!="")
+          {
+            r=r+1;
+          }
+        }
+          if(r==81)
+          {
+            if(win==false)
+        {
+            setTimeout(() => {   alert("The sudoku is valid!");}, 100);
+            win=true;
+            generatesudoku();
+          }
+        }
+        else
+        {
+          alert("The solution is not completed!");
+        }
+        });
+
+</script>
+
+
+
+{% endblock %}
