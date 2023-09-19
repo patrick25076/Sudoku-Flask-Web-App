@@ -1,5 +1,5 @@
 # Stellar Sudoku
-![Sudoku Game](https://scontent.fsbz3-1.fna.fbcdn.net/v/t39.30808-6/321349602_1340398730107080_7756720123638753800_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=730e14&_nc_ohc=RRVcyMbSuxEAX8zqtAO&_nc_ht=scontent.fsbz3-1.fna&oh=00_AfDmqbZ9HWMAyJG4E3854MfzzgAOPU6mZZU3Lzj4tQW2Ig&oe=63A6992E)
+![Sudoku Game](https://github.com/patrick25076/Sudoku-Flask-Web-App/assets/113384811/701dcfd9-c8f0-41a8-a3c7-924d61b5e379)
 ## Video Demo:  <https://www.youtube.com/watch?v=Sjrom7oYiwM>
 ## Explaining the project:
 This is my CS50x final project which is a Sudoku Web Application.The app was developed with Python,Javascript,Flask Framework, HTML and CSS.
